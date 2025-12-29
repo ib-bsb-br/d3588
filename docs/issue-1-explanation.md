@@ -18,8 +18,8 @@
 1. **Extract the existing DTB** from the vendor firmware (e.g., from `/boot` or the firmware image) and decompile it with a tool like `dtc`. For example: `dtc -I dtb -O dts -o extracted.dts /boot/rk3588-liontron.dtb`
 2. **Compare with upstream RK3588 DT bindings** (from mainline or BSP trees) to adjust nodes, compatible strings, clocks, and regulators for kernel 6.x.
 3. **Carry over vendor-specific tweaks** (GPIOs, power sequences, regulator voltages, panel timings, PCIe tunings, etc.) into the updated DT.
-4. **Rebuild and test a kernel 6.x** with the adapted DTB, verifying boot, display, GPU, USB, PCIe, storage, networking, and power management.
-5. **Iterate** based on boot logs (`dmesg`) to fix missing drivers or incorrect bindings.
+4. **Rebuild a kernel 6.x and package the adapted DTB** into the vendor's firmware format (often a resource image). Then, test the new firmware, verifying boot, display, GPU, USB, PCIe, storage, networking, and power management.
+5. **Iterate** based on boot logs (`dmesg`) to fix missing drivers or incorrect bindings. Look for errors, warnings, and failed driver probes.
 
 ## Constraints and challenges
 - **Closed vendor sources:** No official kernel or DT source is available, so reverse engineering is necessary.
