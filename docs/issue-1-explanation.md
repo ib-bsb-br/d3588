@@ -15,7 +15,7 @@
 - **Why DTB adaptation matters:** When switching to a newer kernel, hardware definitions and driver bindings often change. Adapting the DTB ensures power rails, GPIOs, clocks, and peripheral nodes (e.g., GPU, Wi‑Fi, storage) match what the new kernel expects.
 
 ## What is required to solve the issue
-1. **Extract the existing DTB** from the vendor firmware (e.g., from `/boot` or the firmware image) and decompile it with tools like `dtc`.
+1. **Extract the existing DTB** from the vendor firmware (e.g., from `/boot` or the firmware image) and decompile it with a tool like `dtc`. For example: `dtc -I dtb -O dts -o extracted.dts /boot/rk3588-liontron.dtb`
 2. **Compare with upstream RK3588 DT bindings** (from mainline or BSP trees) to adjust nodes, compatible strings, clocks, and regulators for kernel 6.x.
 3. **Carry over vendor-specific tweaks** (GPIOs, power sequences, regulator voltages, panel timings, PCIe tunings, etc.) into the updated DT.
 4. **Rebuild and test a kernel 6.x** with the adapted DTB, verifying boot, display, GPU, USB, PCIe, storage, networking, and power management.
