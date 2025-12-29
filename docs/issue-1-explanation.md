@@ -11,7 +11,7 @@
 
 ## Background (newbie-friendly)
 - **Kernel version:** Linux 5.10 is an older long-term support kernel. Newer Rockchip RK3588 drivers and glibc releases target 6.x kernels, so upgrading can improve hardware support and software compatibility.
-- **DTB (Device Tree Blob):** A DTB describes the board's hardware (pins, regulators, buses, clocks, etc.) so the kernel can drive it correctly. Vendors typically ship a DTB alongside the kernel. If the DTB source (`.dts`) is unavailable, it can be decompiled from the binary to adjust settings for a new kernel.
+- **DTB (Device Tree Blob):** A DTB describes the board's hardware (pins, regulators, buses, clocks, etc.) so the kernel can drive it correctly. Vendors typically ship a DTB alongside the kernel. If the DTB source (`.dts`) is unavailable, it can be decompiled from the binary so it can be adapted for a new kernel.
 - **Why DTB adaptation matters:** When switching to a newer kernel, hardware definitions and driver bindings often change. Adapting the DTB ensures power rails, GPIOs, clocks, and peripheral nodes (e.g., GPU, Wi‑Fi, storage) match what the new kernel expects.
 
 ## What is required to solve the issue
